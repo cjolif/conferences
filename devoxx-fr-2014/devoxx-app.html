@@ -25,8 +25,10 @@
 					this.appendChild(instance);
 				};
 				proto.attributeChangedCallback = function (name, oldValue, newValue) {
-					this.querySelector("#country").innerHTML = newValue;
-					this.querySelector("img").src = URLS[newValue];
+					if (name === "country") {
+						this.querySelector("#country").innerHTML = newValue;
+						this.querySelector("img").src = URLS[newValue];
+					}
 				};
 				document.registerElement("c-devoxx", { prototype: proto });
 			})();
