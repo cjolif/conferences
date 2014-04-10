@@ -2,4 +2,4 @@
 
 ## License
 
-["New" BSD License](./License)
+["New" BSD License](./LICENSE)
