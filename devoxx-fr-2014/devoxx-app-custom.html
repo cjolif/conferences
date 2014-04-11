@@ -1,5 +1,10 @@
 <html>
 <head>
+	<style>
+		c-devoxx {
+			display: block;
+		}
+	</style>
 	<script>
 		(function () {
 			var URLS = {
@@ -37,7 +42,7 @@
 <body>
 <template id="devoxxtemplate">
 	Devoxx <span id="country"></span>
-	<img src="">
+	<img style="width: 320px; height: 240px;" src="">
 </template>
 <c-devoxx country="France" onclick="event.currentTarget.swapimage();"></c-devoxx>
 <c-devoxx id="foo" country="UK"></c-devoxx>

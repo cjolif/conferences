@@ -1,5 +1,10 @@
 <html>
 <head>
+	<style>
+		c-devoxx {
+			display: block;
+		}
+	</style>
 	<script src="bower_components/platform/platform.js"></script>
 	<script src="bower_components/polymer/polymer.js"></script>
 </head>
@@ -7,7 +12,7 @@
 <polymer-element name="c-devoxx" attributes="country">
 	<template id="devoxxtemplate">
 		Devoxx <span id="country">{{country}}</span>
-		<img src="{{URLS[country]}}">
+		<img style="width: 320px; height: 240px;" src="{{URLS[country]}}">
 	</template>
 	<script>
 		(function () {
