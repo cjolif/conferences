@@ -1,0 +1,46 @@
+<html>
+<head>
+	<script>
+		(function () {
+			var URLS = {
+				"France": "http://www.devoxx.fr/wp-content/uploads/2013/10/slide_paris.jpg",
+				"UK": "https://farm9.staticflickr.com/8258/8653601915_caf2be2bc7_b.jpg",
+				"Belgium": "http://www.devoxx.be/images_dummy/slide_01.png"
+			};
+			var ALTERNATE_URL = "https://regbe.devoxx.com/VAADIN/themes/DevoxxRegistrationTheme/devoxx_logo.png";
+			var proto = Object.create(HTMLElement.prototype, {});
+			proto.swapimage = function () {
+				var img = this.querySelector("img");
+				if (img.src !== ALTERNATE_URL) {
+					img.src = ALTERNATE_URL;
+				} else {
+					img.src = URLS[this.getAttribute("country")];
+				}
+			};
+			proto.createdCallback = function () {
+				var t = document.querySelector("#devoxxtemplate");
+				var instance = t.content.cloneNode(true);
+				instance.querySelector("#country").innerHTML = this.getAttribute("country");
+				instance.querySelector("img").src = URLS[this.getAttribute("country")];
+				this.appendChild(instance);
+			};
+			proto.attributeChangedCallback = function (name, oldValue, newValue) {
+				if (name === "country") {
+					this.querySelector("#country").innerHTML = newValue;
+					this.querySelector("img").src = URLS[newValue];
+				}
+			};
+			document.registerElement("c-devoxx", { prototype: proto });
+		})();
+	</script>
+</head>
+<body>
+<template id="devoxxtemplate">
+	Devoxx <span id="country"></span>
+	<img src="">
+</template>
+<c-devoxx country="France" onclick="event.currentTarget.swapimage();"></c-devoxx>
+<c-devoxx id="foo" country="UK"></c-devoxx>
+<button onclick="document.getElementById('foo').setAttribute('country', 'Belgium')">Click Me!</button>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "devoxx-fr-2014",
+  "version": "0.0.0",
+  "homepage": "https://github.com/cjolif/conferences",
+  "authors": [
+    "Christophe Jolif <cjolif@gmail.com>"
+  ],
+  "license": "BSD",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~0.2.2",
+    "delite": "~0.1.1-dev"
+  }
+}
