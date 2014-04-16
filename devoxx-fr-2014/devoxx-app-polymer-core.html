@@ -12,16 +12,19 @@
 <polymer-element name="c-devoxx" attributes="country">
 	<template id="devoxxtemplate">
 		Devoxx <span id="country">{{country}}</span>
-		<img style="width: 320px; height: 240px;" src="{{URLS[country]}}">
+		<img style="width: 320px; height: 240px;" src="{{url}}">
 	</template>
 	<script>
 		(function () {
+			var URLS = {
+				"France": "http://www.devoxx.fr/wp-content/uploads/2013/10/slide_paris.jpg",
+				"UK": "https://farm9.staticflickr.com/8258/8653601915_caf2be2bc7_b.jpg",
+				"Belgium": "http://www.devoxx.be/images_dummy/slide_01.png"
+			};
 			var ALTERNATE_URL = "https://regbe.devoxx.com/VAADIN/themes/DevoxxRegistrationTheme/devoxx_logo.png";
 			Polymer("c-devoxx", {
-					URLS: {
-						"France": "http://www.devoxx.fr/wp-content/uploads/2013/10/slide_paris.jpg",
-						"UK": "https://farm9.staticflickr.com/8258/8653601915_caf2be2bc7_b.jpg",
-						"Belgium": "http://www.devoxx.be/images_dummy/slide_01.png"
+					get url() {
+						return URLS[this.country];
 					},
 					swapimage: function () {
 						var img = this.shadowRoot.querySelector("img");
